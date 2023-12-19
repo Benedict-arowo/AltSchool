@@ -144,6 +144,7 @@ main {
                 & h1 {
                     font-weight: 400;
                     font-size: 30px;
+                    text-shadow: 2px 3px 6px #00000096;
                 }
             }
 
@@ -281,6 +282,10 @@ main {
                     border: none;
                 }
 
+                & button:focus-visible {
+                    outline: 1px solid rgb(0, 68, 0);
+                }
+
                 & .question-mark {
                     padding: 4px 10px;
                     border: 2px solid var(--custom-blue);
@@ -321,6 +326,16 @@ main {
             padding: 42px 40px;
             color: white;
 
+            & a {
+                text-decoration-color: white;
+
+                color: white;
+            }
+
+            & a:focus-visible {
+                outline: 1px solid white;
+            }
+
             & .price-container {
                 display: flex;
                 flex-direction: row;
@@ -341,10 +356,6 @@ main {
                     margin-top: 8px;
                     font-size: 24px;
                 }
-            }
-
-            & a {
-                text-decoration-color: white;
             }
 
             & h2 {
@@ -382,9 +393,6 @@ main {
                     margin: 8px 0;
                 }
 
-                & a {
-                    color: white;
-                }
             }
 
             & #renew-notice {
@@ -414,9 +422,6 @@ main {
                         border-radius: 100%;
                     }
 
-                    & a {
-                        color: white;
-                    }
                 }
             }
         }
@@ -433,6 +438,11 @@ footer {
     & #TOS {
         color: #31708F;
         text-decoration: none;
+
+    }
+
+    & #TOS:focus-visible {
+        outline: 1px solid var(--custom-blue);
     }
 }
 
