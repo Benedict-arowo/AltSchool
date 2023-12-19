@@ -1,0 +1,256 @@
+* {
+    box-sizing: border-box;
+}
+
+p,
+a,
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --Text-Headings: #011c34;
+    --green: #2ec4b6;
+    --gray-3: #f0f0f0;
+    --gray: #737373;
+    --black: #000b0a;
+}
+
+body {
+    background-color: #f7fdfc;
+    font-family: "Sofia pro";
+}
+
+.center {
+    display: grid;
+    place-content: center;
+}
+
+#hero {
+    color: var(--gray, #737373);
+    font-family: "Brown";
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    line-height: 25px;
+    /* 156.25% */
+    max-width: 300px;
+
+    & svg {
+        width: 120px;
+        height: 120px;
+        margin-top: 24px;
+        margin-bottom: 16px;
+    }
+
+    & svg:focus-visible {
+        outline: 1px solid var(--green);
+    }
+
+    & h1 {
+        margin-bottom: 20px;
+        color: var(--black, #000b0a);
+        font-size: 30px;
+        font-weight: 700;
+    }
+}
+
+#hero-computer-text {
+    display: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    gap: 24px;
+    padding: 24px 16px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0px 4px 50px 0px rgba(4, 8, 19, 0.1);
+    color: var(--Text-Headings, #011c34);
+
+    & div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        & label {
+            color: var(--Text-Headings, #011c34);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        & input:not([type="password"]),
+        select {
+            font-size: 14px;
+            padding: 14px 12px;
+            border-radius: 4px;
+            min-width: 295px;
+            color: var(--CL-Grey, #737373);
+            font-weight: 300;
+            border: 1px solid var(--gray-3);
+        }
+
+        & #passport-input-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0 8px;
+            border-radius: 4px;
+            border: 1px solid var(--gray-3);
+            min-width: 295px;
+            color: var(--CL-Grey, #737373);
+
+            & input {
+                border: none;
+                padding: 14px 6px;
+                width: 100%;
+                outline: 1px solid transparent;
+                font-size: 14px;
+                font-weight: 300;
+            }
+
+            & svg {
+                cursor: pointer;
+            }
+
+            & svg:focus-visible {
+                outline: 1px solid var(--green);
+            }
+        }
+
+        & #passport-input-container:focus-within {
+            outline: 1px solid var(--green);
+        }
+
+        & input:not([type="password"]):focus-visible,
+        select:focus-visible {
+            outline: 1px solid var(--green);
+        }
+    }
+
+    & #register-btn {
+        background-color: var(--green);
+        padding: 12px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        border-radius: 2px;
+    }
+
+    & #register-btn:focus-visible {
+        outline: 1px solid gray;
+    }
+}
+
+@media (max-width: 330px) {
+    main {
+        & form {
+            width: 100%;
+            border-radius: 0;
+
+            & div {
+
+                & input:not([type="password"]),
+                select {
+                    min-width: 250px;
+                }
+
+                & #passport-input-container {
+                    min-width: 250px;
+                }
+            }
+        }
+
+        & #hero {
+            padding: 0 8px;
+        }
+    }
+}
+
+@media (min-width: 650px) {
+    main {
+        #hero {
+            max-width: none;
+        }
+
+        & form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+
+            & #register-btn,
+            #activity-input-container,
+            #password-input-main {
+                grid-column: span 2;
+
+                & input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1000px) {
+    body {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+
+        & #mobile-footer {
+            display: none;
+        }
+
+        & main {
+            grid-template-columns: 1fr 1fr;
+            padding: 0 24px;
+            column-gap: 32px;
+
+            & #hero>#hero-mobile-text {
+                display: none;
+            }
+
+            & #hero>#hero-computer-text {
+                display: block;
+                max-width: 400px;
+            }
+
+            & #desktop-footer {
+                display: block;
+                max-width: none;
+                grid-column: span 2;
+            }
+        }
+    }
+}
+
+& footer {
+    margin-top: 32px;
+    padding: 12px;
+    color: #000;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    max-width: 300px;
+    margin: 0 auto;
+
+    & a {
+        color: var(--green);
+        text-decoration-color: var(--green);
+        text-decoration-thickness: 0;
+        text-underline-offset: 2px;
+    }
+
+    & a:focus-visible {
+        outline: 1px solid var(--green);
+    }
+}
+
+#desktop-footer {
+    display: none;
+}
