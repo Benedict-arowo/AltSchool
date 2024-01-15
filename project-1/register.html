@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Register - AltSchool</title>
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<a href="./index.html">
+					<li>About me</li>
+				</a>
+			</ul>
+		</nav>
+
+		<header>
+			<h1>Application Form</h1>
+		</header>
+
+		<main>
+			<form action="" method="post">
+				<table>
+					<thead>
+						<h3 style="font-weight: 300">Fill in your details</h3>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<label for="first_name"
+									>First Name<span>*</span></label
+								>
+								<input
+									type="text"
+									name="first_name"
+									placeholder="Enter your first name." />
+							</td>
+							<td>
+								<label for="last_name"
+									>Last Name<span>*</span></label
+								>
+								<input
+									type="text"
+									name="last_name"
+									placeholder="Enter your last name." />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="date_of_birth"
+									>Date of Birth<span>*</span></label
+								>
+								<input type="date" name="date_of_birth" />
+							</td>
+							<td>
+								<label for="gender">Gender<span>*</span></label>
+								<select>
+									<option value="" disabled selected>
+										Select Gender
+									</option>
+									<option value="male">male</option>
+									<option value="male">female</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="email">Email<span>*</span></label>
+								<input
+									type="email"
+									name="email"
+									placeholder="Enter your email." />
+							</td>
+							<td>
+								<label for="education_level"
+									>Education Level<span>*</span></label
+								>
+								<select name="education_level">
+									<option value="Bsc">Bsc</option>
+									<option value="Bsc">Msc</option>
+									<option value="Bsc">Diploma</option>
+									<option value="Bsc">Doctorate (PhD)</option>
+									<option value="Bsc">
+										High School / Secondary School
+									</option>
+									<option value="undergraduate">
+										Undergraduate
+									</option>
+									<option value="">
+										Junior / Middle School
+									</option>
+									<option value="">Post Graduate</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="country"
+									>Country<span>*</span></label
+								>
+								<select name="country" id="">
+									<option value="nigeria">Nigeria</option>
+									<option value="niger">Niger</option>
+									<option value="iraq">Iraq</option>
+									<option value="iran">Iran</option>
+								</select>
+							</td>
+							<td>
+								<label for="state"
+									>State/City of Residence<span
+										>*</span
+									></label
+								>
+								<input
+									type="text"
+									placeholder="Enter your state/city of residence" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="employment_status"
+									>Employment Status<span>*</span></label
+								>
+								<select name="employment_status">
+									<option value="unemployed">
+										unemployed
+									</option>
+									<option value="employed">employed</option>
+									<option value="self_employed">
+										self employed
+									</option>
+								</select>
+							</td>
+							<td>
+								<label for="phone_number"
+									>Phone Number<span>*</span></label
+								>
+								<input
+									type="number"
+									placeholder="08116645423"
+									name="phone_number" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="employment_status"
+									>Choose school<span>*</span></label
+								>
+								<select name="employment_status">
+									<option value="creative_economy">
+										School of Creative Economy
+									</option>
+									<option value="business">
+										School of Business
+									</option>
+								</select>
+							</td>
+							<td>
+								<label for="employment_status"
+									>Choose course of study<span>*</span></label
+								>
+								<select
+									aria-placeholder="Select course"
+									name="employment_status">
+									<option value="">""</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="how_you_found_us"
+									>How did you hear about us?<span
+										>*</span
+									></label
+								>
+								<select
+									name="how_you_found_us"
+									aria-placeholder="">
+									<option value="twitter">Twitter</option>
+									<option value="facebook">Facebook</option>
+									<option value="linkedin">Linkedin</option>
+									<option value="youtube">Youtube</option>
+									<option value="friend">Friend</option>
+									<option value="whatsapp">WhatsApp</option>
+									<option value="instagram">Instagram</option>
+									<option value="bill_board">
+										Bill Board
+									</option>
+									<option value="other">other</option>
+								</select>
+							</td>
+							<td>
+								<label for="discord_code"
+									>Scholarship/Discount Code</label
+								>
+								<input
+									type="text"
+									name="discount_code"
+									placeholder="Scholarship or student ID or discord codes" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<button>Proceed</button>
+			</form>
+		</main>
+	</body>
+</html>
