@@ -1,6 +1,14 @@
-# SIMPLE SERVER
+# Simple Server - Http Methods
 
 ## TASK
 
--   Make an http server using node http module.
--   Make sure it returns your name when you visit localhost:8900
+Write a simple server to handle the following
+
+-   GET /books
+-   PUT /books
+-   DELETE /books
+-   GET /books/author/
+-   POST /books/author/
+-   PUT /books/author/
+
+NB. Whatever the response for each of this endpoints, is up to you to decide.
