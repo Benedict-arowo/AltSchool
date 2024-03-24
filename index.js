@@ -1,12 +1,14 @@
+require("dotenv").config();
 const express = require("express");
-const authorsRouter = require("./routes/authors");
-const logger = require("./middlewear/logger");
-
+const Routes = require("./routes");
+const connectDb = require("./connectDb");
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 3000;
 
-app.use(logger);
-app.use("/authors", authorsRouter);
+app.use(express.json());
+
+Routes(app);
+connectDb(process.env.mongodbUri);
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
