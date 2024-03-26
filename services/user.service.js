@@ -2,6 +2,7 @@ const argon2 = require("argon2");
 const ErrorWithStatus = require("../middlewear/ErrorWithStatus");
 const { StatusCodes } = require("http-status-codes");
 const { emailRegex, passwordRegex } = require("../utils");
+const User = require("../models/user_schema");
 
 const checkDataExistance = (data) => {
 	data.map((item) => {
@@ -27,6 +28,7 @@ const checkDataExistance = (data) => {
 		}
 	});
 };
+
 const createUserService = async (body) => {
 	const { name, email, password, confirm_password } = body;
 
@@ -45,9 +47,42 @@ const createUserService = async (body) => {
 
 	const hashedPassword = await argon2.hash(password);
 
-	return { hashedPassword, email, name, password, confirm_password };
+	try {
+		const newUser = await User.create({
+			name,
+			email,
+			password: hashedPassword,
+		});
+
+		return {
+			_id: newUser._id,
+			name: newUser.name,
+			email: newUser.email,
+			createdAt: newUser.createdAt,
+		};
+	} catch (error) {
+		// Log error in development
+		process.env.NODE_ENV === "development" && console.log(error);
+		// Error code for duplicate unique fields which would usally mean the email already exists.
+		if (error.code === 11000)
+			throw new ErrorWithStatus(
+				StatusCodes.BAD_REQUEST,
+				"User with email already exists"
+			);
+		else {
+			throw new ErrorWithStatus(
+				StatusCodes.INTERNAL_SERVER_ERROR,
+				"Internal Server Error"
+			);
+		}
+	}
+};
+
+const getUserService = async () => {
+	return await User.find();
 };
 
 module.exports = {
 	createUserService,
+	getUserService,
 };
