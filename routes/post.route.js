@@ -6,6 +6,7 @@ const {
 	getPost,
 	getPosts,
 	deletePost,
+	updatePost,
 } = require("../controllers/post.controller");
 const Authenticate = require("../middlewear/authenticate");
 
@@ -17,6 +18,7 @@ postRouter
 postRouter
 	.route("/:id")
 	.get(wrapper(getPost))
+	.patch(Authenticate, wrapper(updatePost))
 	.delete(Authenticate, wrapper(deletePost));
 
 module.exports = postRouter;
