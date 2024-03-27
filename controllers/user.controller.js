@@ -2,6 +2,7 @@ const { StatusCodes } = require("http-status-codes");
 const {
 	createUserService,
 	getUserService,
+	loginUserService,
 } = require("../services/user.service");
 
 const createUser = async (req, res) => {
@@ -19,7 +20,17 @@ const getUsers = async (req, res) => {
 		data: user,
 	});
 };
+
+const loginUser = async (req, res) => {
+	const user = await loginUserService(req.body);
+	res.status(StatusCodes.OK).json({
+		message: "success",
+		data: user,
+	});
+};
+
 module.exports = {
 	createUser,
 	getUsers,
+	loginUser,
 };

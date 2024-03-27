@@ -3,6 +3,7 @@ const ErrorWithStatus = require("../middlewear/ErrorWithStatus");
 const { StatusCodes } = require("http-status-codes");
 const { emailRegex, passwordRegex } = require("../utils");
 const User = require("../models/user_schema");
+const jwt = require("jsonwebtoken");
 
 const checkDataExistance = (data) => {
 	data.map((item) => {
@@ -82,7 +83,41 @@ const getUserService = async () => {
 	return await User.find();
 };
 
+const loginUserService = async ({ email, password }) => {
+	if (!email || !password)
+		throw new ErrorWithStatus(
+			StatusCodes.BAD_REQUEST,
+			"Email and Password are required"
+		);
+
+	const user = await User.findOne({ email });
+
+	if (!user)
+		throw new ErrorWithStatus(StatusCodes.NOT_FOUND, "User not found");
+
+	const validPassword = await argon2.verify(user.password, password);
+
+	if (!validPassword)
+		throw new ErrorWithStatus(StatusCodes.BAD_REQUEST, "Invalid password.");
+
+	const accessToken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+		expiresIn: 60 * 5, // 5 minutes
+	});
+
+	return {
+		accessToken,
+		user: {
+			_id: user._id,
+			name: user.name,
+			email: user.email,
+			createdAt: user.createdAt,
+			updatedAt: user.updatedAt,
+		},
+	};
+};
+
 module.exports = {
 	createUserService,
 	getUserService,
+	loginUserService,
 };
